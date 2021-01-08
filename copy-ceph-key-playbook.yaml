@@ -1,0 +1,22 @@
+---
+
+- name: Fetch bootstraped ssh key
+  hosts: ceph-mon01.ceph.lab
+  gather_facts: false
+  tasks:
+  - name: Grab ceph.pub key and store it
+    fetch:
+      src: /etc/ceph/ceph.pub
+      dest: /tmp/ceph.pub
+      flat: yes
+
+- name: Add key to all nodes
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Ensure key is in roots authorized_key file
+      authorized_key:
+        user: root
+        key: "{{ lookup('file', '/tmp/ceph.pub') }}"
+        state: present
+

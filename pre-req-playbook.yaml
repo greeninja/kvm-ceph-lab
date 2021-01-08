@@ -4,7 +4,7 @@
   hosts: all
   gather_facts: false
   tasks:
-    - name: Ensure chrony and Podman are installed
+    - name: Ensure packages are installed
       package:
         name: "{{ item }}"
         state: installed
@@ -12,8 +12,16 @@
         - podman
         - chrony
         - python3
+        - lvm2
     - name: Start and enable chronyd
       service:
         name: chronyd
         state: started
         enabled: true
+    - name: Build hosts file
+      lineinfile: 
+        dest: /etc/hosts
+        regexp: '.*{{ item }}$'
+        line: "{{ hostvars[item]['ansible_host'] }} {{item}}"
+        state: present
+      loop: "{{ groups['all'] }}"
