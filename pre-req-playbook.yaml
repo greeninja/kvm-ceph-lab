@@ -1,0 +1,19 @@
+---
+
+- name: Ceph Lab Requirements
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Ensure chrony and Podman are installed
+      package:
+        name: "{{ item }}"
+        state: installed
+      loop:
+        - podman
+        - chrony
+        - python3
+    - name: Start and enable chronyd
+      service:
+        name: chronyd
+        state: started
+        enabled: true

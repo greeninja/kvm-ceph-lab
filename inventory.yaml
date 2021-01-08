@@ -1,0 +1,35 @@
+---
+
+ceph:
+  hosts:
+    bastion.ceph.lab:
+      ansible_host: 10.44.20.90
+    grafana.ceph.lab:
+      ansible_host: 10.44.20.16
+    ceph-mon01.ceph.lab:
+      ansible_host: 10.44.20.21
+    ceph-mon02.ceph.lab:
+      ansible_host: 10.44.20.22
+    ceph-mon03.ceph.lab:
+      ansible_host: 10.44.20.23
+    ceph-t1-osd01.ceph.lab:
+      ansible_host: 10.44.20.31
+    ceph-t1-osd02.ceph.lab:
+      ansible_host: 10.44.20.32
+    ceph-t1-osd03.ceph.lab:
+      ansible_host: 10.44.20.33
+    ceph-t1-osd04.ceph.lab:
+      ansible_host: 10.44.20.34
+    ceph-t2-osd01.ceph.lab:
+      ansible_host: 10.44.20.41
+    ceph-t2-osd02.ceph.lab:
+      ansible_host: 10.44.20.42
+    ceph-t2-osd03.ceph.lab:
+      ansible_host: 10.44.20.43
+    ceph-t2-osd04.ceph.lab:
+      ansible_host: 10.44.20.44
+    ceph-rgw01.ceph.lab:
+      ansible_host: 10.44.20.111
+    ceph-rgw02.ceph.lab:
+      ansible_host: 10.44.20.112
+
