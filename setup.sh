@@ -9,7 +9,7 @@ ssh_pub_key="/root/.ssh/id_ed25519.pub"
 dns_domain="ceph.lab"
 
 # Extra Vars
-root_password="d0ddl3"
+root_password="password"
 os_drive_size="40G"
 tmp_dir="/tmp"
 
@@ -37,7 +37,7 @@ cat <<EOF > $tmp_dir/ceph-presentation.xml
   <domain name="ceph.lab"/>
   <ip address="10.44.20.1" netmask="255.255.255.0">
     <dhcp>
-      <range start="10.44.20.10" end="10.44.20.100"/>
+      <range start="10.44.20.200" end="10.44.20.2100"/>
     </dhcp>
   </ip>
 </network>
@@ -50,7 +50,7 @@ cat <<EOF >$tmp_dir/ceph-replication.xml
   <bridge name="virbr3301"/>
   <ip address="172.16.20.1" netmask="255.255.255.0">
     <dhcp>
-      <range start="172.16.20.10" end="172.16.20.100"/>
+      <range start="172.16.20.200" end="172.16.20.210"/>
     </dhcp>
   </ip>
 </network>
