@@ -37,7 +37,7 @@ cat <<EOF > $tmp_dir/ceph-presentation.xml
   <domain name="ceph.lab"/>
   <ip address="10.44.20.1" netmask="255.255.255.0">
     <dhcp>
-      <range start="10.44.20.200" end="10.44.20.2100"/>
+      <range start="10.44.20.200" end="10.44.20.210"/>
     </dhcp>
   </ip>
 </network>
