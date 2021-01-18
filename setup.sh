@@ -2,7 +2,8 @@
 
 # Node building vars
 image_dir="/var/lib/libvirt/images"
-base_os_img="/var/lib/libvirt/images/iso/CentOS-7-x86_64-GenericCloud.qcow2"
+#base_os_img="/var/lib/libvirt/images/iso/CentOS-7-x86_64-GenericCloud.qcow2"
+base_os_img="/var/lib/libvirt/images/iso/CentOS-Stream-GenericCloud-8-20201217.0.x86_64.qcow2"
 ssh_pub_key="/root/.ssh/id_ed25519.pub"
 
 # Network Vars
@@ -192,7 +193,7 @@ EOF
     virt-customize -a $image_dir/ceph-mon$mon.$dns_domain.qcow2 \
       --root-password password:$root_password \
       --uninstall cloud-init \
-      --hostname ceph-mon$mon.$dns_domain \
+      --hostname ceph-mon$mon \
       --ssh-inject root:file:$ssh_pub_key \
       --copy-in $tmp_dir/ceph-mon$mon/ifcfg-eth0:/etc/sysconfig/network-scripts/ \
       --copy-in $tmp_dir/ceph-mon$mon/ifcfg-eth1:/etc/sysconfig/network-scripts/ \
@@ -259,7 +260,7 @@ EOF
     virt-customize -a $image_dir/ceph-t1-osd$i.$dns_domain.qcow2 \
       --root-password password:$root_password \
       --uninstall cloud-init \
-      --hostname ceph-t1-osd$i.$dns_domain \
+      --hostname ceph-t1-osd$i \
       --ssh-inject root:file:$ssh_pub_key \
       --copy-in $tmp_dir/ceph-t1-osd$i/ifcfg-eth0:/etc/sysconfig/network-scripts/ \
       --copy-in $tmp_dir/ceph-t1-osd$i/ifcfg-eth1:/etc/sysconfig/network-scripts/ \
@@ -331,7 +332,7 @@ EOF
     virt-customize -a $image_dir/ceph-t2-osd$i.$dns_domain.qcow2 \
       --root-password password:$root_password \
       --uninstall cloud-init \
-      --hostname ceph-t2-osd$i.$dns_domain \
+      --hostname ceph-t2-osd$i \
       --ssh-inject root:file:$ssh_pub_key \
       --copy-in $tmp_dir/ceph-t2-osd$i/ifcfg-eth0:/etc/sysconfig/network-scripts/ \
       --copy-in $tmp_dir/ceph-t2-osd$i/ifcfg-eth1:/etc/sysconfig/network-scripts/ \
@@ -393,7 +394,7 @@ EOF
       virt-customize -a $image_dir/ceph-rgw$rgw.$dns_domain.qcow2 \
         --root-password password:$root_password \
         --uninstall cloud-init \
-        --hostname ceph-rgw$rgw.$dns_domain \
+        --hostname ceph-rgw$rgw \
         --ssh-inject root:file:$ssh_pub_key \
         --copy-in $tmp_dir/ceph-rgw$rgw/ifcfg-eth0:/etc/sysconfig/network-scripts/ \
         --selinux-relabel
@@ -447,7 +448,7 @@ EOF
       virt-customize -a $image_dir/ceph-mds$mds.$dns_domain.qcow2 \
         --root-password password:$root_password \
         --uninstall cloud-init \
-        --hostname ceph-mds$mds.$dns_domain \
+        --hostname ceph-mds$mds \
         --ssh-inject root:file:$ssh_pub_key \
         --copy-in $tmp_dir/ceph-mds$mds/ifcfg-eth0:/etc/sysconfig/network-scripts/ \
         --selinux-relabel
@@ -501,7 +502,7 @@ EOF
       virt-customize -a $image_dir/ceph-iscsi$iscsi.$dns_domain.qcow2 \
         --root-password password:$root_password \
         --uninstall cloud-init \
-        --hostname ceph-iscsi$iscsi.$dns_domain \
+        --hostname ceph-iscsi$iscsi \
         --ssh-inject root:file:$ssh_pub_key \
         --copy-in $tmp_dir/ceph-iscsi$iscsi/ifcfg-eth0:/etc/sysconfig/network-scripts/ \
         --selinux-relabel
